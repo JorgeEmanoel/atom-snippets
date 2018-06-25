@@ -1,0 +1,86 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.source.php':
+    '<a> close':
+        'prefix': 'aclose'
+        'body': '<a href="#" class="close" aria-label="close" data-dismiss="${1:modal}">&times;</a>$2'
+
+    'BS Modal':
+        'prefix': 'modal'
+        'body': """
+            <div class="modal fade" id="modal-$1">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a href="#" class="close" aria-label="close" data-dismiss="modal">&times;</a>
+                            <h3 class="modal-title">
+                                $2
+                            </h3>
+                        </div>
+                        {{-- ./modal-header --}}
+
+                        <div class="modal-body">
+                            $2
+                        </div>
+                        {{-- ./modal-body --}}
+
+                        ${3:<div class="modal-footer">
+                            <button class="btn btn-sm btn-default" data-dismiss="modal">
+                                ${4:Fechar} <i class="fa fa-times"></i>
+                            </button>
+                        </div>}
+                        {{-- /.modal-footer --}}
+                    </div>
+                    {{-- ./modal-content --}}
+                </div>
+                {{-- ./modal-dialog --}}
+            </div>
+            {{-- ./modal --}}
+        """
+
+    'MVC Route':
+        'prefix': 'route'
+        'body': "Route::${1:get}('$2', '$3')->name('$4');$5"
+
+    'BS Panel':
+        'prefix': 'panel'
+        'body': """
+            <div class="panel panel-$1" ${2:id="$3"}>
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        $4
+                    </h3>
+                </div>
+
+                <div class="panel-body">
+                    $5
+                </div>
+            </div>
+        """
+
+    'Session Flash':
+        'prefix': 'flash'
+        'body': """
+            Session::flash('mensagem', '$1');
+            Session::flash('tipo_mensagem', '${2:success}');$3
+        """
